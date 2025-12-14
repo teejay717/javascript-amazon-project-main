@@ -1,6 +1,14 @@
 import { cart, removeFromCart } from '../data/cart.js';
 import { products } from '../data/products.js';
 import { formatCurrency } from './utils/money.js';  
+import { calculateCartQuantity } from '../data/cart.js';
+
+hello();
+
+const today = dayjs();
+const deliveryDate = today.add(7, 'days');
+console.log(deliveryDate.format('dddd, MMMM D'));
+
 
 let cartSummaryHTML = '';
 let cartQuantity = 0;
@@ -126,9 +134,8 @@ document.querySelectorAll('.js-delete-link').forEach((link) => {
 
 function updateCheckoutQuantity() {
 
-            cart.forEach((cartItem) => {
-                cartQuantity += cartItem.quantity;
-            })
+    let cartQuantity = 0;
+            cartQuantity = calculateCartQuantity();
 
             document.querySelector('.checkout-items')
                 .innerHTML = cartQuantity;
