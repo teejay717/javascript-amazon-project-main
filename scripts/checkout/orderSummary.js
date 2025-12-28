@@ -134,7 +134,7 @@ export function renderOrderSummary() {
             document.querySelector('.checkout-items')
                     .innerHTML = cartQuantity;
             
-
+            renderPaymentSummary();
             updateCheckoutQuantity();        
         })
     })
